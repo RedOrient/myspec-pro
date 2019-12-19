@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
   s.name             = 'podTestLibrary'
   s.version          = '0.1.0'
   s.summary          = 'A short description of podTestLibrary.'
+  s.swift_version    = '3.3'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -21,22 +22,24 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/yujingliang/podTestLibrary'
+  s.homepage         = 'https://github.com/RedOrient/myspec-pro'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'yujingliang' => '1030807747@qq.com' }
-  s.source           = { :git => 'https://github.com/yujingliang/podTestLibrary.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/RedOrient/myspec-pro.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'podTestLibrary/Classes/**/*'
+  s.source_files = 'podTestLibrary/Classes/**/*.{h,m,mm,swift}'
   
   # s.resource_bundles = {
   #   'podTestLibrary' => ['podTestLibrary/Assets/*.png']
   # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+    s.public_header_files = 'Pod/Classes/**/*.h'
+    s.frameworks = 'Foundation', 'UIKit', 'MapKit', 'WebKit', 'CoreTelephony', 'CommonCrypto', 'AdSupport'
   # s.dependency 'AFNetworking', '~> 2.3'
+    s.dependency 'FBSDKCoreKit'
+    s.dependency 'FBSDKLoginKit'
 end
