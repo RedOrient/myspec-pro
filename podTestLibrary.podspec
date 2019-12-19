@@ -37,7 +37,7 @@ TODO: Add long description of the pod here.
   #   'podTestLibrary' => ['podTestLibrary/Assets/*.png']
   # }
 
-    s.public_header_files = 'Pod/Classes/**/*.h'
+    s.public_header_files = 'podTestLibrary/Classes/**/*.h'
     s.frameworks = 'Foundation', 'UIKit', 'MapKit', 'WebKit', 'CoreTelephony', 'CommonCrypto', 'AdSupport'
   # s.dependency 'AFNetworking', '~> 2.3'
     s.dependency 'FBSDKCoreKit'
