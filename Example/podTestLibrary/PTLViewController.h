@@ -9,5 +9,6 @@
 @import UIKit;
 
 @interface PTLViewController : UIViewController
+@property (nonatomic, strong) UILabel *UI;
 
 @end

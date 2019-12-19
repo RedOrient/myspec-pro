@@ -30,11 +30,19 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNV-4A-6PB">
-                                <rect key="frame" x="151" y="207" width="52" height="30"/>
+                                <rect key="frame" x="160" y="207" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="fb login"/>
+                                <state key="normal" title="login"/>
                                 <connections>
                                     <action selector="fbLoginClick:" destination="whP-gf-Uak" eventType="touchUpInside" id="MkI-ou-ffc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6p-sy-sej">
+                                <rect key="frame" x="155" y="269" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="logout"/>
+                                <connections>
+                                    <action selector="logout:" destination="whP-gf-Uak" eventType="touchUpInside" id="Eri-zc-Mxo"/>
                                 </connections>
                             </button>
                         </subviews>

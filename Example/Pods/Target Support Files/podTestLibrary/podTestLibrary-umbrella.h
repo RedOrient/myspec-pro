@@ -12,6 +12,8 @@
 
 #import "AccountCache.h"
 #import "facebook.h"
+#import "googleplay.h"
+#import "Guest.h"
 #import "HttpUtil.h"
 #import "IntlAccount.h"
 #import "IntlDefine.h"
@@ -30,7 +32,6 @@
 #import "IntlWebSession.h"
 #import "IntlWebSession_Internal.h"
 #import "IntlWebViewDelegate.h"
-#import "MaskNetWorkingView.h"
 #import "Session.h"
 
 FOUNDATION_EXPORT double podTestLibraryVersionNumber;

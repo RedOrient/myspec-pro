@@ -7,6 +7,9 @@
 //
 
 #import "PTLViewController.h"
+#import "facebook.h"
+#import "Guest.h"
+#import "IntlUserCenter.h"
 
 @interface PTLViewController ()
 
@@ -34,7 +37,11 @@
     [self UpdateUI:@"登录取消"];
     
 }
-
+- (void)afterLogout {
+    [self UpdateUI:@"登出成功"];
+    
+    NSLog(@"Logout success");
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -46,7 +53,7 @@
     [self.view addSubview:self.UI];
 }
 
--(IBAction)init:(id)sender{
+- (IBAction)initClick:(id)sender {
     [self UpdateUI:@"初始化成功"];
     
     NSURL *url = [[NSURL alloc] initWithString:@"https://gather-auth.ycgame.com"];
@@ -63,10 +70,7 @@
           WebSessionClosedHandler:^() {
               NSLog(@"Forceclosed");
           }
-               GoogleClickHandler:^() {
-                   NSLog(@"Google Click");
-                   [[googleplay instance] signin];
-               }
+               GoogleClickHandler:nil
              FacebookClickHandler:^(BOOL isBind) {
                  NSLog(@"Facebook Click");
                  [[facebook instance] signin:isBind];
@@ -74,21 +78,23 @@
                 GuestClickHandler:^() {
                     [[Guest instance] signin];
                 }];
-    [[googleplay instance] init:self];
     [IntlUserCenter defaultUserCenter].delegate = self;
     [IntlUserCenter defaultUserCenter].loginDelegate = self;
     [IntlUserCenter defaultUserCenter].userCenterDelegate = self;
 }
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-- (IBAction)initClick:(id)sender {
-}
 - (IBAction)fbLoginClick:(id)sender {
+    [[IntlUserCenter defaultUserCenter] LoginCenter:self];
+}
+- (IBAction)logout:(id)sender {
+    [[facebook instance] signout];
+    [[IntlUserCenter defaultUserCenter] logout];
 }
 
+-(void)UpdateUI:(NSString *)msg{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.UI.text = msg;
+        });
+    });
+}
 @end

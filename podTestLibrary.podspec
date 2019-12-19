@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'podTestLibrary'
-  s.version          = '0.1.0'
+  s.version          = '0.1.5'
   s.summary          = 'some category for me'
 
 
@@ -40,9 +40,9 @@ Pod::Spec.new do |s|
   s.public_header_files = 'podTestLibrary/Classes/**/*.h'
   s.source_files = 'podTestLibrary/Classes/**/*.{h,m,mm,swift}'
   
-  # s.resource_bundles = {
-  #   'podTestLibrary' => ['podTestLibrary/Assets/*.png']
-  # }
+   s.resource_bundles = {
+'podTestLibrary' => ['podTestLibrary/Assets/*.{xib,png}']
+   }
 
     
     s.frameworks = 'UIKit', 'MapKit', 'WebKit', 'CoreTelephony', 'AdSupport'

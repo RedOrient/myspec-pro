@@ -19,7 +19,7 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - podTestLibrary (0.1.2):
+  - podTestLibrary (0.1.5):
     - FBSDKCoreKit
     - FBSDKLoginKit
   - Specta (1.0.7)
@@ -50,7 +50,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 8fb98209109fb684937f05d534305edb18c20207
   FBSDKLoginKit: c7c6ffd9ca9ea45aee32361840af040ad8f6706a
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  podTestLibrary: f123f6e473ea0ab168ddb56ae0e58eba6263217a
+  podTestLibrary: 5ee8ed1ebed498333d31fc7af16e8501aba6e362
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
 PODFILE CHECKSUM: b9aeeac04ac1c91537fe459e9ce39c8b9cdc9eac

@@ -13,6 +13,7 @@
 #import "AccountCache.h"
 #import "IntlDefine.h"
 #import "IntlInfoUtil.h"
+#import "IntlUserCenter.h"
 
 @implementation Guest
 static Guest *_instance;
