@@ -1,9 +1,9 @@
 {
   "name": "podTestLibrary",
-  "version": "0.1.0",
-  "summary": "A short description of podTestLibrary.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/yujingliang/podTestLibrary",
+  "version": "0.1.2",
+  "summary": "some category for me",
+  "description": "A longer description of MyExtension in Markdown format.\n\n* Think: Why did you write this? What is the focus? What does it do?\n* CocoaPods will be using this to generate tags, and improve search results.\n* Try to keep it short, snappy and to the point.\n* Finally, don't worry about the indent, CocoaPods strips it!",
+  "homepage": "https://github.com/RedOrient/myspec-pro",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,13 +12,22 @@
     "yujingliang": "1030807747@qq.com"
   },
   "source": {
-    "git": "https://github.com/yujingliang/podTestLibrary.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/RedOrient/myspec-pro.git",
+    "tag": "0.1.2"
   },
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "podTestLibrary/Classes/**/*",
+  "public_header_files": "podTestLibrary/Classes/**/*.h",
+  "source_files": "podTestLibrary/Classes/**/*.{h,m,mm,swift}",
+  "frameworks": [
+    "UIKit",
+    "MapKit",
+    "WebKit",
+    "CoreTelephony",
+    "AdSupport"
+  ],
+  "requires_arc": true,
   "dependencies": {
     "FBSDKCoreKit": [
 

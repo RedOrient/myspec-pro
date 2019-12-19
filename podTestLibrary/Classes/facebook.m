@@ -7,7 +7,7 @@
 //
 
 #import "facebook.h"
-#import "IntlSDK/IntlSDK.h"
+#import "IntlSDK.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 @implementation facebook

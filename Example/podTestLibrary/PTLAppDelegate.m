@@ -7,13 +7,44 @@
 //
 
 #import "PTLAppDelegate.h"
-
+#import "facebook.h"
 @implementation PTLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[facebook instance] ApplicationInit:application didFinishLaunchingWithOptions:launchOptions];
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    //    BOOL fbhandled = [[FBSDKApplicationDelegate sharedInstance] application:application
+    //                                        openURL:url
+    //                                        sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+    //                                        annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+    BOOL fbhandled = [[facebook instance] handleURL:application
+                                            openURL:url
+                                  sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                         annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+    // Add any custom logic here.
+    return fbhandled;
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    //    BOOL fbhandled = [[FBSDKApplicationDelegate sharedInstance] application:application
+    //                                                                  openURL:url
+    //                                                        sourceApplication:sourceApplication
+    //                                                               annotation:annotation];
+    BOOL fbhandled = [[facebook instance] handleURL:application
+                                            openURL:url
+                                  sourceApplication:sourceApplication
+                                         annotation:annotation];
+    return fbhandled;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
