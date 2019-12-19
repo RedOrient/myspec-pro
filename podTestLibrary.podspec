@@ -39,10 +39,12 @@ Pod::Spec.new do |s|
 
   s.public_header_files = 'podTestLibrary/Classes/**/*.h'
   s.source_files = 'podTestLibrary/Classes/**/*.{h,m,mm,swift}'
-  
-   s.resource_bundles = {
-'podTestLibrary' => ['podTestLibrary/Assets/*.{xib,png}']
-   }
+
+  s.resources = 'podTestLibrary/Assets/**/*.{xib,png}'
+
+#s.resource_bundles = {
+#    'podTestLibrary' => ['podTestLibrary/Assets/**/*.{xib,png}']
+#   }
 
     
     s.frameworks = 'UIKit', 'MapKit', 'WebKit', 'CoreTelephony', 'AdSupport'
