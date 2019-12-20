@@ -43,12 +43,12 @@ Pod::Spec.new do |s|
   #s.resources = 'podTestLibrary/Assets/**/*.{xib,png}'
 
   #框架被引用时，会下载此目录下的资源文件
-  s.resource_bundles = {
-    'podTestLibrary' => ['podTestLibrary/Assets/**/*.{storyboard,xcassets,xib,plist}']
-   }
+#s.resource_bundles = {
+#    'podTestLibrary' => ['podTestLibrary/Assets/**/*.{storyboard,xcassets,xib,plist,png}']
+#   }
 
   #功能同上
-  #s.resources = 'podTestLibrary/Assets/**/*.{storyboard,xcassets,xib,png'
+s.resources = ['podTestLibrary/Assets/*.png', 'podTestLibrary/Classes/**/*.xib']
     
     s.frameworks = 'UIKit', 'MapKit', 'WebKit', 'CoreTelephony', 'AdSupport'
   # s.dependency 'AFNetworking', '~> 2.3'
