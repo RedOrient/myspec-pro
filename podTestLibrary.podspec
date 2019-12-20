@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'podTestLibrary'
-  s.version          = '0.1.8'
+  s.version          = '0.2.0'
   s.summary          = 'some category for me'
 
 
@@ -40,15 +40,13 @@ Pod::Spec.new do |s|
   s.public_header_files = 'podTestLibrary/Classes/**/*.h'
   s.source_files = 'podTestLibrary/Classes/**/*.{h,m,mm,swift}'
 
-  #s.resources = 'podTestLibrary/Assets/**/*.{xib,png}'
+  s.resources = 'podTestLibrary/Classes/**/*.xib'
 
-  #框架被引用时，会下载此目录下的资源文件
 #s.resource_bundles = {
-#    'podTestLibrary' => ['podTestLibrary/Assets/**/*.{storyboard,xcassets,xib,plist,png}']
+#    'podTestLibrary' => ['podTestLibrary/Assets/*.png', 'podTestLibrary/Classes/*.xib']
 #   }
 
-  #功能同上
-s.resources = ['podTestLibrary/Assets/*.png', 'podTestLibrary/Classes/**/*.xib']
+ 
     
     s.frameworks = 'UIKit', 'MapKit', 'WebKit', 'CoreTelephony', 'AdSupport'
   # s.dependency 'AFNetworking', '~> 2.3'

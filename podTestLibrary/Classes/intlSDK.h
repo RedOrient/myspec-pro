@@ -13,7 +13,6 @@
 #import "IntlUserCenter.h"
 #import "IntlSDKToolkit.h"
 #import "IntlInfoUtil.h"
-#import "Session.h"
 #import "HttpUtil.h"
 #import "IntlUserCenterPersistent.h"
 #import "AccountCache.h"
