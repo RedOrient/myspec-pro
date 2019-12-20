@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		092AA5E123ACF2840019D86D /* podTestLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 092AA5E023ACF2840019D86D /* podTestLibrary.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -27,6 +28,7 @@
 		0916E6C623AB6C1100E76B30 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
 		0916E6C923AB6C1D00E76B30 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0916E6CB23AB6C2B00E76B30 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		092AA5E023ACF2840019D86D /* podTestLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = podTestLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14D98DC5F8C3F6A4F9D60667 /* podTestLibrary.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = podTestLibrary.podspec; path = ../podTestLibrary.podspec; sourceTree = "<group>"; };
 		4E6421092F726D481D70DE71 /* Pods_podTestLibrary_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_podTestLibrary_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* podTestLibrary_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = podTestLibrary_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				092AA5E123ACF2840019D86D /* podTestLibrary.framework in Frameworks */,
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
@@ -107,6 +110,7 @@
 		6003F58C195388D20070C39A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				092AA5E023ACF2840019D86D /* podTestLibrary.framework */,
 				0916E6CB23AB6C2B00E76B30 /* WebKit.framework */,
 				0916E6C923AB6C1D00E76B30 /* CFNetwork.framework */,
 				0916E6C623AB6C1100E76B30 /* Network.framework */,

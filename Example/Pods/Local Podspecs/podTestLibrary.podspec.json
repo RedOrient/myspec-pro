@@ -1,6 +1,6 @@
 {
   "name": "podTestLibrary",
-  "version": "0.1.5",
+  "version": "0.2.2",
   "summary": "some category for me",
   "description": "A longer description of MyExtension in Markdown format.\n\n* Think: Why did you write this? What is the focus? What does it do?\n* CocoaPods will be using this to generate tags, and improve search results.\n* Try to keep it short, snappy and to the point.\n* Finally, don't worry about the indent, CocoaPods strips it!",
   "homepage": "https://github.com/RedOrient/myspec-pro",
@@ -13,13 +13,14 @@
   },
   "source": {
     "git": "https://github.com/RedOrient/myspec-pro.git",
-    "tag": "0.1.5"
+    "tag": "0.2.2"
   },
   "platforms": {
     "ios": "8.0"
   },
   "public_header_files": "podTestLibrary/Classes/**/*.h",
   "source_files": "podTestLibrary/Classes/**/*.{h,m,mm,swift}",
+  "resources": "podTestLibrary/Assets/*.*",
   "frameworks": [
     "UIKit",
     "MapKit",
@@ -33,9 +34,6 @@
 
     ],
     "FBSDKLoginKit": [
-
-    ],
-    "GoogleSignIn": [
 
     ]
   }

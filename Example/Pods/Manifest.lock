@@ -1,9 +1,4 @@
 PODS:
-  - Expecta (1.0.6)
-  - "Expecta+Snapshots (3.1.1)":
-    - Expecta (~> 1.0)
-    - FBSnapshotTestCase/Core (~> 2.0)
-    - Specta (~> 1.0)
   - FBSDKCoreKit (5.13.1):
     - FBSDKCoreKit/Basics (= 5.13.1)
     - FBSDKCoreKit/Core (= 5.13.1)
@@ -14,45 +9,27 @@ PODS:
     - FBSDKLoginKit/Login (= 5.13.1)
   - FBSDKLoginKit/Login (5.13.1):
     - FBSDKCoreKit (~> 5.0)
-  - FBSnapshotTestCase (2.1.4):
-    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
-  - FBSnapshotTestCase/Core (2.1.4)
-  - FBSnapshotTestCase/SwiftSupport (2.1.4):
-    - FBSnapshotTestCase/Core
-  - podTestLibrary (0.1.5):
+  - podTestLibrary (0.2.2):
     - FBSDKCoreKit
     - FBSDKLoginKit
-  - Specta (1.0.7)
 
 DEPENDENCIES:
-  - Expecta
-  - "Expecta+Snapshots"
-  - FBSnapshotTestCase
   - podTestLibrary (from `../`)
-  - Specta
 
 SPEC REPOS:
   trunk:
-    - Expecta
-    - "Expecta+Snapshots"
     - FBSDKCoreKit
     - FBSDKLoginKit
-    - FBSnapshotTestCase
-    - Specta
 
 EXTERNAL SOURCES:
   podTestLibrary:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
-  "Expecta+Snapshots": dcff217eef506dabd6dfdc7864ea2da321fafbb8
   FBSDKCoreKit: 8fb98209109fb684937f05d534305edb18c20207
   FBSDKLoginKit: c7c6ffd9ca9ea45aee32361840af040ad8f6706a
-  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  podTestLibrary: 5ee8ed1ebed498333d31fc7af16e8501aba6e362
-  Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
+  podTestLibrary: 0d856ac43808bf0399dbd6e8f6756b3cbd12f6e8
 
-PODFILE CHECKSUM: b9aeeac04ac1c91537fe459e9ce39c8b9cdc9eac
+PODFILE CHECKSUM: 339a5269f06ecbec451ef3cf7bec1a4d0637c49b
 
 COCOAPODS: 1.8.4

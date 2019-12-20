@@ -50,6 +50,7 @@
          FacebookClickHandler:(IntlFacebookClickHandler)facebookHandler
             GuestClickHandler:(IntlGuestClickHandler)guestHandler
 {
+    NSLog(@"login center init");
     self = [super init];
     if(self){
         self.appInfo = @{

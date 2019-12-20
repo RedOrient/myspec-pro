@@ -31,8 +31,8 @@
 
 - (instancetype)initFullScreenWithURL:(NSURL*)url
                            WebSession:(IntlWebSession *)webSession {
-    self = [super initWithNibName:@"IntlWebDialogViewController" bundle:[NSBundle bundleWithIdentifier:@"ycgame.IntlSDK"]];
-
+    NSBundle *xib = [NSBundle bundleForClass:[self class]];
+    self = [super initWithNibName:@"IntlWebDialogViewController" bundle:[NSBundle bundleForClass:xib]];
     if (self) {
         [super awakeFromNib];
         self.url = url;
@@ -48,7 +48,8 @@
 - (instancetype)initWithWebViewSize:(CGSize)size
                             WithURL:(NSURL*)url
                          WebSession:(IntlWebSession *)webSession {
-    self = [super initWithNibName:@"IntlWebDialogViewController" bundle:[NSBundle mainBundle]];
+    NSBundle *xib = [NSBundle bundleForClass:[self class]];
+    self = [super initWithNibName:@"IntlWebDialogViewController" bundle:[NSBundle bundleForClass:xib]];
 
     if (self) {
         [super awakeFromNib];
