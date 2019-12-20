@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'podTestLibrary'
-  s.version          = '0.2.0'
+  s.version          = '0.2.1'
   s.summary          = 'some category for me'
 
 
@@ -40,7 +40,7 @@ Pod::Spec.new do |s|
   s.public_header_files = 'podTestLibrary/Classes/**/*.h'
   s.source_files = 'podTestLibrary/Classes/**/*.{h,m,mm,swift}'
 
-  s.resources = 'podTestLibrary/Classes/**/*.xib'
+  s.resources = 'podTestLibrary/Assets/*.*'
 
 #s.resource_bundles = {
 #    'podTestLibrary' => ['podTestLibrary/Assets/*.png', 'podTestLibrary/Classes/*.xib']

@@ -48,7 +48,7 @@
 - (instancetype)initWithWebViewSize:(CGSize)size
                             WithURL:(NSURL*)url
                          WebSession:(IntlWebSession *)webSession {
-    self = [super initWithNibName:@"IntlWebDialogViewController" bundle:[NSBundle bundleWithIdentifier:@"ycgame.IntlSDK"]];
+    self = [super initWithNibName:@"IntlWebDialogViewController" bundle:[NSBundle mainBundle]];
 
     if (self) {
         [super awakeFromNib];

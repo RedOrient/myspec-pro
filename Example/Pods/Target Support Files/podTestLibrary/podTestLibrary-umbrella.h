@@ -32,7 +32,6 @@
 #import "IntlWebSession.h"
 #import "IntlWebSession_Internal.h"
 #import "IntlWebViewDelegate.h"
-#import "Session.h"
 
 FOUNDATION_EXPORT double podTestLibraryVersionNumber;
 FOUNDATION_EXPORT const unsigned char podTestLibraryVersionString[];
