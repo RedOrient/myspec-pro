@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'podTestLibrary'
-  s.version          = '0.1.5'
+  s.version          = '0.1.8'
   s.summary          = 'some category for me'
 
 
@@ -48,7 +48,7 @@ Pod::Spec.new do |s|
    }
 
   #功能同上
-  s.resources = 'podTestLibrary/Assets/**/*.{storyboard,xcassets,xib,png'
+  #s.resources = 'podTestLibrary/Assets/**/*.{storyboard,xcassets,xib,png'
     
     s.frameworks = 'UIKit', 'MapKit', 'WebKit', 'CoreTelephony', 'AdSupport'
   # s.dependency 'AFNetworking', '~> 2.3'
