@@ -7,36 +7,36 @@
 //
 
 #import "PTLAppDelegate.h"
-#import "facebook.h"
+#import "IntlUserCenter.h"
 @implementation PTLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [[facebook instance] ApplicationInit:application didFinishLaunchingWithOptions:launchOptions];
+    [IntlUserCenter ApplicationInit:application didFinishLaunchingWithOptions:launchOptions];
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    BOOL fbhandled = [[facebook instance] handleURL:application
+    BOOL handled = [IntlUserCenter handleURL:application
                                             openURL:url
                                   sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
                                          annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
     // Add any custom logic here.
-    return fbhandled;
+    return handled;
 }
 
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
-    BOOL fbhandled = [[facebook instance] handleURL:application
+    BOOL handled = [IntlUserCenter handleURL:application
                                             openURL:url
                                   sourceApplication:sourceApplication
                                          annotation:annotation];
-    return fbhandled;
+    return handled;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

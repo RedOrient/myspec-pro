@@ -7,8 +7,6 @@
 //
 
 #import "PTLViewController.h"
-#import "facebook.h"
-#import "Guest.h"
 #import "IntlUserCenter.h"
 
 @interface PTLViewController ()
@@ -66,28 +64,22 @@
                        GPClientID:@"7453817292517158"
                          GPSecret:@"EVWHPXxGEOXzbjfWxhUp4yOYgTMSJDNA"
                       LoginWebURL:url
-                       DialogSize:CGSizeMake(414, 319)
-          WebSessionClosedHandler:^() {
-              NSLog(@"Forceclosed");
-          }
-               GoogleClickHandler:nil
-             FacebookClickHandler:^(BOOL isBind) {
-                 NSLog(@"Facebook Click");
-                 [[facebook instance] signin:isBind];
-             }
-                GuestClickHandler:^() {
-                    [[Guest instance] signin];
-                }];
+                       DialogSize:CGSizeMake(414, 319)];
     [IntlUserCenter defaultUserCenter].delegate = self;
     [IntlUserCenter defaultUserCenter].loginDelegate = self;
     [IntlUserCenter defaultUserCenter].userCenterDelegate = self;
 }
+
 - (IBAction)fbLoginClick:(id)sender {
     [[IntlUserCenter defaultUserCenter] LoginCenter:self];
 }
+
 - (IBAction)logout:(id)sender {
-    [[facebook instance] signout];
     [[IntlUserCenter defaultUserCenter] logout];
+}
+
+- (IBAction)usercenter:(id)sender {
+    [[IntlUserCenter defaultUserCenter] UserCenter:self];
 }
 
 -(void)UpdateUI:(NSString *)msg{

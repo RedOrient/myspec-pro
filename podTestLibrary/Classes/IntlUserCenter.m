@@ -13,6 +13,8 @@
 #import "IntlUserCenterPersistent.h"
 #import "IntlInfoUtil.h"
 #import "HttpUtil.h"
+#import "facebook.h"
+#import "Guest.h"
 #import "AccountCache.h"
 #import "IntlDefine.h"
 #import "IntlAccount.h"
@@ -45,10 +47,6 @@
                      GPSecret:(NSString *)gp_secret
                   LoginWebURL:(NSURL *)url
                    DialogSize:(CGSize)dialogSize
-      WebSessionClosedHandler:(IntlWebSessionClosedHandler)closedHandler
-           GoogleClickHandler:(IntlGoogleClickHandler)googleHandler
-         FacebookClickHandler:(IntlFacebookClickHandler)facebookHandler
-            GuestClickHandler:(IntlGuestClickHandler)guestHandler
 {
     NSLog(@"login center init--1");
     self = [super init];
@@ -71,10 +69,18 @@
         self.dialogSize = dialogSize;
         self.current_view = controller;
         self.webSession = [[IntlWebSession alloc] init];
-        [self.webSession setSessionClosedHandler:closedHandler];
-        [self.webSession setGoogleClickHandler:googleHandler];
-        [self.webSession setFacebookClickHandler:facebookHandler];
-        [self.webSession setGuestClickHandler:guestHandler];
+
+        [self.webSession setSessionClosedHandler:^() {
+            NSLog(@"Forceclosed");
+        }];
+        [self.webSession setGameCenterClickHandler:nil];
+        [self.webSession setFacebookClickHandler:^(BOOL isBind) {
+            NSLog(@"Facebook Click");
+            [[facebook instance] signin:isBind];
+        }];
+        [self.webSession setGuestClickHandler:^() {
+            [[Guest instance] signin];
+        }];
         [self registWebCommand];
     }
     return self;
@@ -92,10 +98,6 @@ static IntlUserCenter *_instance;
              GPSecret:(NSString *)gp_secret
           LoginWebURL:(NSURL *)url
            DialogSize:(CGSize)dialogSize
-WebSessionClosedHandler:(IntlWebSessionClosedHandler)closedHandler
-   GoogleClickHandler:(IntlGoogleClickHandler)googleHandler
- FacebookClickHandler:(IntlFacebookClickHandler)facebookHandler
-    GuestClickHandler:(IntlGuestClickHandler)guestHandler
 {
     NSLog(@"login center init --2");
     static dispatch_once_t onceToken;
@@ -109,11 +111,7 @@ WebSessionClosedHandler:(IntlWebSessionClosedHandler)closedHandler
                                                GPClientID:gp_clientid
                                                  GPSecret:gp_secret
                                               LoginWebURL:url
-                                               DialogSize:dialogSize
-                                  WebSessionClosedHandler:closedHandler
-                                       GoogleClickHandler:googleHandler
-                                     FacebookClickHandler:facebookHandler
-                                        GuestClickHandler:guestHandler];
+                                               DialogSize:dialogSize];
     });
 }
 
@@ -301,14 +299,45 @@ WebSessionClosedHandler:(IntlWebSessionClosedHandler)closedHandler
 - (IntlAccount *)getCurrentAccount {
     return self.currentAccount;
 }
+
 - (void)logout {
     self.currentAccount = nil;
     self.sessionID = nil;
+    
+    [[facebook instance] signout];
     [AccountCache clearAccount];
     if (self.delegate) {
         [self.delegate afterLogout];
     }
 }
+
++ (void)ApplicationInit:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
+    [[facebook instance] ApplicationInit:application didFinishLaunchingWithOptions:launchOptions];
+
+}
+
++ (BOOL)handleURL:(UIApplication *)application
+          openURL:(NSURL *)url
+          options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
+    BOOL fbhandled = [[facebook instance] handleURL:application
+                                            openURL:url
+                                  sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                         annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+    // Add any custom logic here.
+    return fbhandled;
+}
+
++ (BOOL)handleURL:(UIApplication *)application
+          openURL:(NSURL *)url
+sourceApplication:(NSString *)sourceApplication
+       annotation:(id)annotation{
+    BOOL fbhandled = [[facebook instance] handleURL:application
+                                            openURL:url
+                                  sourceApplication:sourceApplication
+                                         annotation:annotation];
+    return fbhandled;
+}
+
 - (void)loadAccounts {
     NSDictionary *jsonObj = [IntlUserCenterPersistent getAccountsJSON];
     if (!jsonObj) {

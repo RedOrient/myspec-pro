@@ -17,7 +17,7 @@ typedef void(^IntlWebCommandHandler)(IntlWebCommandSender *commandSender, NSStri
 typedef void(^IntlWebPageLoadFailedHandler)(IntlWebCommandSender *commandSender, NSError *error);
 typedef void(^IntlWebSessionClosedHandler)(void);
 typedef void(^IntlFacebookClickHandler)(BOOL);
-typedef void(^IntlGoogleClickHandler)(void);
+typedef void(^IntlGameCenterClickHandler)(void);
 typedef void(^IntlGuestClickHandler)(void);
 
 #define     YC_WEB_GENERAL_COMMAND_DOMAIN   @"yc.mobilesdk.web"
@@ -52,7 +52,7 @@ typedef void(^IntlGuestClickHandler)(void);
 - (void)setLoadPageFaildHandler:(IntlWebPageLoadFailedHandler)handler;
 - (void)setSessionClosedHandler:(IntlWebSessionClosedHandler)handler;
 - (void)setFacebookClickHandler:(IntlFacebookClickHandler)handler;
-- (void)setGoogleClickHandler:(IntlGoogleClickHandler)handler;
+- (void)setGameCenterClickHandler:(IntlGameCenterClickHandler)handler;
 - (void)setGuestClickHandler:(IntlGuestClickHandler)handler;
 
 

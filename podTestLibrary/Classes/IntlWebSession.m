@@ -22,7 +22,7 @@
 @interface IntlWebSession () <UIAlertViewDelegate> {
     IntlWebPageLoadFailedHandler _loadFailedHandler;
     IntlWebSessionClosedHandler _sessionClosedHandler;
-    IntlGoogleClickHandler _googleClickHandler;
+    IntlGameCenterClickHandler _gameCenterClickHandler;
     IntlFacebookClickHandler _facebookClickHandler;
     IntlGuestClickHandler _guestClickHandler;
 
@@ -97,8 +97,8 @@ static IntlWebSession *_currentSession = nil;
         [self registPersonCenterCloseCommand];
         [self registRefreshCommand];
         [self registCloseAllCommand];
-        [self registGoogleCommand];
-        [self registPersonCenterGoogleCommand];
+        [self registGameCenterCommand];
+        [self registPersonCenterGameCenterCommand];
         [self registFacebookCommand];
         [self registPersonCenterFacebookCommand];
         [self registGuestCommand];
@@ -205,8 +205,8 @@ static IntlWebSession *_currentSession = nil;
     _sessionClosedHandler = handler;
 }
 
-- (void)setGoogleClickHandler:(IntlGoogleClickHandler)handler {
-    _googleClickHandler = handler;
+- (void)setGameCenterClickHandler:(IntlGameCenterClickHandler)handler {
+    _gameCenterClickHandler = handler;
 }
 
 - (void)setFacebookClickHandler:(IntlFacebookClickHandler)handler {
@@ -286,30 +286,30 @@ static IntlWebSession *_currentSession = nil;
                          }];
 }
 
-- (void)registGoogleCommand {
+- (void)registGameCenterCommand {
     __weak IntlWebSession *weakSelf = self;
     [self registForCommandDomain:LOGIN_CENTER_WEB_COMMAND_DOMAIN
-                         Command:@"Google" Handler:^(IntlWebCommandSender *commandSender, NSString *commandDomain, NSString *command, NSDictionary *args) {
+                         Command:@"GameCenter" Handler:^(IntlWebCommandSender *commandSender, NSString *commandDomain, NSString *command, NSDictionary *args) {
                              if (weakSelf.webDialog) {
                                  [weakSelf.webDialog close];
                              }
-                             if (_googleClickHandler != nil) {
-                                 _googleClickHandler();
+                             if (_gameCenterClickHandler != nil) {
+                                 _gameCenterClickHandler();
                              }
 
                          }];
 }
-- (void)registPersonCenterGoogleCommand {
+- (void)registPersonCenterGameCenterCommand {
     __weak IntlWebSession *weakSelf = self;
     [self registForCommandDomain:PERSON_CENTER_WEB_COMMAND_DOMAIN
-                         Command:@"Google" Handler:^(IntlWebCommandSender *commandSender, NSString *commandDomain, NSString *command, NSDictionary *args) {
+                         Command:@"GameCenter" Handler:^(IntlWebCommandSender *commandSender, NSString *commandDomain, NSString *command, NSDictionary *args) {
                              if (weakSelf.webDialog) {
                                  [weakSelf.webDialog close];
                              }
-                             if (_googleClickHandler != nil) {
-                                 _googleClickHandler();
+                             if (_gameCenterClickHandler != nil) {
+                                 _gameCenterClickHandler();
                              }
-                             NSLog(@"personcenter google");
+                             NSLog(@"personcenter GameCenter");
                              
                          }];
 }

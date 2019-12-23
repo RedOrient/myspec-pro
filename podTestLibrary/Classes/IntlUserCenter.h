@@ -62,14 +62,21 @@
            GPClientID:(NSString *)gp_clientid
              GPSecret:(NSString *)gp_secret
           LoginWebURL:(NSURL *)url
-           DialogSize:(CGSize)dialogSize
-WebSessionClosedHandler:(IntlWebSessionClosedHandler)coledHandler
-GoogleClickHandler:(IntlGoogleClickHandler)googleHandler
-FacebookClickHandler:(IntlFacebookClickHandler)facebookHandler
-GuestClickHandler:(IntlGuestClickHandler)guestHandler;
+           DialogSize:(CGSize)dialogSize;
 
 
 + (IntlUserCenter *)defaultUserCenter;
+
++ (void)ApplicationInit:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+
++ (BOOL)handleURL:(UIApplication *)application
+          openURL:(NSURL *)url
+          options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options;
+
++ (BOOL)handleURL:(UIApplication *)application
+          openURL:(NSURL *)url
+sourceApplication:(NSString *)sourceApplication
+       annotation:(id)annotation;
 
 - (void)LoginCenter:(UIViewController *)viewController;
 
