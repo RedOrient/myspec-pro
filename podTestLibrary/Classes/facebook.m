@@ -153,8 +153,13 @@ sourceApplication:(NSString *)sourceApplication
 - (void)signout{
     FBSDKLoginManager *login = [facebook LoginManager];
     if ([FBSDKAccessToken currentAccessToken]) {
-        NSLog(@"Facebook Log out");
-        [login logOut];
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me/permissions"
+                                           parameters:nil
+                                           HTTPMethod:@"DELETE"]
+         startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+             NSLog(@"Facebook Log out");
+             [login logOut];
+         }];
     }
 }
 

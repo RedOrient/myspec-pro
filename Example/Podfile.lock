@@ -9,7 +9,7 @@ PODS:
     - FBSDKLoginKit/Login (= 5.13.1)
   - FBSDKLoginKit/Login (5.13.1):
     - FBSDKCoreKit (~> 5.0)
-  - podTestLibrary (0.2.4):
+  - podTestLibrary (0.2.5):
     - FBSDKCoreKit
     - FBSDKLoginKit
 
@@ -28,7 +28,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   FBSDKCoreKit: 8fb98209109fb684937f05d534305edb18c20207
   FBSDKLoginKit: c7c6ffd9ca9ea45aee32361840af040ad8f6706a
-  podTestLibrary: c2d1aea4dcf8a30edab94dc4a27ffa43256401be
+  podTestLibrary: b98821f8a40581d5e758abb5ee21406062b5e722
 
 PODFILE CHECKSUM: 339a5269f06ecbec451ef3cf7bec1a4d0637c49b
 

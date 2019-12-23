@@ -22,6 +22,7 @@
     NSLog(@"access token is: %@", access_token);
     [self UpdateUI:@"登录成功"];
 }
+
 - (void)onLoginError:(NSNumber *)errorCode
     errorDescription:(NSString *)errorDes{
     NSLog(@"login error");
@@ -30,10 +31,36 @@
     NSString *message = [NSString stringWithFormat:@"登录失败 Cd:%@ Msg:%@",errorCode,errorDes];
     [self UpdateUI:message];
 }
+
 - (void)onLoginCancel{
     NSLog(@"Login Cancelled");
     [self UpdateUI:@"登录取消"];
     
+}
+
+//用户中心回调
+- (void)onBindSuccess{
+    [self UpdateUI:@"绑定成功"];
+}
+
+- (void)onBindCancel{
+    [self UpdateUI:@"绑定取消"];
+}
+
+- (void)onBindError:(NSNumber *)errorCode
+   errorDescription:(NSString *)errorDes{
+    NSLog(@"error code is : %@", errorCode);
+    NSLog(@"error description is : %@", errorDes);
+    NSString *message = [NSString stringWithFormat:@"绑定失败 Cd:%@ Msg:%@",errorCode,errorDes];
+    [self UpdateUI:message];
+}
+
+- (void)onSwitchAccount{
+    [self UpdateUI:@"切换账号，之后游戏需要调用logot并且再次login"];
+    //登出
+    [[IntlUserCenter defaultUserCenter] logout];
+    //重新登入
+    [[IntlUserCenter defaultUserCenter] LoginCenter:self];
 }
 - (void)afterLogout {
     [self UpdateUI:@"登出成功"];
