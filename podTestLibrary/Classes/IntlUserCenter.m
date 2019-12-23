@@ -50,7 +50,7 @@
          FacebookClickHandler:(IntlFacebookClickHandler)facebookHandler
             GuestClickHandler:(IntlGuestClickHandler)guestHandler
 {
-    NSLog(@"login center init");
+    NSLog(@"login center init--1");
     self = [super init];
     if(self){
         self.appInfo = @{
@@ -97,6 +97,7 @@ WebSessionClosedHandler:(IntlWebSessionClosedHandler)closedHandler
  FacebookClickHandler:(IntlFacebookClickHandler)facebookHandler
     GuestClickHandler:(IntlGuestClickHandler)guestHandler
 {
+    NSLog(@"login center init --2");
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _instance = [[IntlUserCenter alloc] initWithAppID:appID

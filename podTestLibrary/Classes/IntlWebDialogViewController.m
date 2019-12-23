@@ -31,8 +31,9 @@
 
 - (instancetype)initFullScreenWithURL:(NSURL*)url
                            WebSession:(IntlWebSession *)webSession {
-    NSBundle *xib = [NSBundle bundleForClass:[self class]];
-    self = [super initWithNibName:@"IntlWebDialogViewController" bundle:[NSBundle bundleForClass:xib]];
+    NSLog(@"initFullScreenWithURL--1");
+    NSBundle *xibBundle = [NSBundle bundleForClass:[self class]];
+    self = [super initWithNibName:@"IntlWebDialogViewController" bundle:xibBundle];
     if (self) {
         [super awakeFromNib];
         self.url = url;
@@ -48,8 +49,9 @@
 - (instancetype)initWithWebViewSize:(CGSize)size
                             WithURL:(NSURL*)url
                          WebSession:(IntlWebSession *)webSession {
-    NSBundle *xib = [NSBundle bundleForClass:[self class]];
-    self = [super initWithNibName:@"IntlWebDialogViewController" bundle:[NSBundle bundleForClass:xib]];
+    NSLog(@"initFullScreenWithURL--2");
+    NSBundle *xibBundle = [NSBundle bundleForClass:[self class]];
+    self = [super initWithNibName:@"IntlWebDialogViewController" bundle:xibBundle];
 
     if (self) {
         [super awakeFromNib];
