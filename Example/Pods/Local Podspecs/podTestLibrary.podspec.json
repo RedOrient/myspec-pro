@@ -1,6 +1,6 @@
 {
   "name": "podTestLibrary",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "summary": "some category for me",
   "description": "A longer description of MyExtension in Markdown format.\n\n* Think: Why did you write this? What is the focus? What does it do?\n* CocoaPods will be using this to generate tags, and improve search results.\n* Try to keep it short, snappy and to the point.\n* Finally, don't worry about the indent, CocoaPods strips it!",
   "homepage": "https://github.com/RedOrient/myspec-pro",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/RedOrient/myspec-pro.git",
-    "tag": "0.2.8"
+    "tag": "0.2.9"
   },
   "platforms": {
     "ios": "8.0"
@@ -26,7 +26,9 @@
     "MapKit",
     "WebKit",
     "CoreTelephony",
-    "AdSupport"
+    "AdSupport",
+    "StoreKit",
+    "GameKit"
   ],
   "requires_arc": true,
   "dependencies": {
@@ -34,6 +36,9 @@
 
     ],
     "FBSDKLoginKit": [
+
+    ],
+    "AppsFlyerFramework": [
 
     ]
   }
