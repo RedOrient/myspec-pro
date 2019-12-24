@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'podTestLibrary'
-  s.version          = '0.2.9'
+  s.version          = '0.3.0'
   s.summary          = 'some category for me'
 
 
@@ -54,9 +54,7 @@ Pod::Spec.new do |s|
     s.dependency 'FBSDKCoreKit'
     s.dependency 'FBSDKLoginKit'
     s.dependency 'AppsFlyerFramework'
-    s.pod_target_xcconfig = {
-    'FRAMEWORK_SEARCH_PATHS' => '$(inherited) $(PODS_ROOT)/AppsFlyerFramework',
-    'OTHER_LDFLAGS'          => '$(inherited) -undefined dynamic_lookup'
-    }
+    s.static_framework = true
+
 
 end
