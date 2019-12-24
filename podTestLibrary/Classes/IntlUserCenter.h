@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "IntlWebSession.h"
+#import "IntlAccount.h"
 
 @protocol IntlUserCenterDelegate <NSObject>
 
@@ -28,7 +29,7 @@
 
 - (void)onLoginCancel;
 
-- (void)onLoginError:(NSUInteger )errorCode
+- (void)onLoginError:(NSNumber *)errorCode
     errorDescription:(NSString *)errorDes;
 @end
 
@@ -39,7 +40,7 @@
 
 - (void)onBindCancel;
 
-- (void)onBindError:(NSUInteger )errorCode
+- (void)onBindError:(NSNumber *)errorCode
     errorDescription:(NSString *)errorDes;
 
 - (void)onSwitchAccount;
@@ -77,6 +78,8 @@
           openURL:(NSURL *)url
 sourceApplication:(NSString *)sourceApplication
        annotation:(id)annotation;
+
++ (IntlAccount *)loadAccounts;
 
 - (void)LoginCenter:(UIViewController *)viewController;
 

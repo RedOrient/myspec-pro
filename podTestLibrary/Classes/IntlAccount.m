@@ -52,6 +52,22 @@ static IntlAccount *_instance=nil;
     return self;
 }
 
+- (instancetype)initWithDictionary:(NSString *)channel
+                        Dictionary:(NSDictionary *)accountDic {
+    self =[super init];
+    if (self) {
+        _channel= channel;
+
+        _openid = [accountDic valueForKey:@"openid"];
+        _access_token = [accountDic valueForKey:@"access_token"];
+        _access_token_expire = [accountDic valueForKey:@"access_token_expire"];
+        _refresh_token = [accountDic valueForKey:@"refresh_token"];
+        _refresh_token_expire = [accountDic valueForKey:@"refresh_token_expire"];
+        _first_authorize = [accountDic valueForKey:@"first_authorize"];
+    }
+    return self;
+}
+
 - (NSDictionary *)getDictionary {
     NSMutableDictionary * dic = [[NSMutableDictionary alloc] initWithCapacity:4];
     [dic setValue:self.openid forKey:@"openid"];
@@ -64,38 +80,5 @@ static IntlAccount *_instance=nil;
 //    [dic setValue:@(self.lastActiveDate.timeIntervalSince1970) forKey:@"activedate"];
     return [[NSDictionary alloc] initWithDictionary:dic];
 }
-
-
-//Channel:(NSString *)channel
-//AccessToken:(NSString *)access_token
-//AccessTokenExpire:(NSNumber *)access_token_expire
-//RefreshToken:(NSString *)refresh_token
-//RefreshTokenExpire:(NSNumber *)refresh_token_expire
-//FirstAuthorized:(BOOL )first_authorize
-//AcitiveDate:(NSDate   *)activeDate{
-//-(NSString *) GetChannel{
-//    return self.channel;
-//}
-//-(NSString *) GetreFreshToken{
-//    return self.refresh_token;
-//}
-//-(NSNumber *) GetrereFreshTokenExpire{
-//    return self.refresh_token_expire;
-//}
-//-(NSString *) GetOpenid{
-//    return self.openid;
-//}
-//-(NSString *) GetAccessToken{
-//    return self.access_token;
-//}
-//-(NSNumber *) GetAccessTokenExpire{
-//    return self.access_token_expire;
-//}
-//-(NSDate *) GetLastActiveDate{
-//    return self.lastActiveDate;
-//}
-//-(BOOL) GetFirstAuthorize{
-//    return self.first_authorize;
-//}
 @end
 

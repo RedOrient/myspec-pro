@@ -22,6 +22,48 @@ static HttpUtil* _instance = nil;
 
 - (void) POSTWithURL: (NSString *)URLString
           parameters: (NSDictionary *)parameter
+             without: (BOOL)Security
+     successCallback: (SuccessCallback)successCallback
+     failureCallBack: (FailureCallBack)failureCallBack{
+    [[Intlgameloading instance] Show:[IntlUserCenter defaultUserCenter].current_view];
+    
+    NSURL *url = [NSURL URLWithString:URLString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:5];
+    request.HTTPMethod = @"POST";
+    [request setValue:@"application/json"forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"UTF-8"forHTTPHeaderField:@"Charset"];
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:parameter options:NSJSONWritingPrettyPrinted error:nil];
+    //设置请求报文
+    [request setHTTPBody:jsonData];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        // Do sth to process returend data
+        [[Intlgameloading instance] Hide];
+        if(!error)
+        {
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            NSNumber *errorCode = [dict valueForKey:@"ErrorCode"];
+            NSString *errorMessage = [dict valueForKey:@"ErrorMessage"];
+            if([errorCode isEqualToNumber:@(0)] && [errorMessage isEqualToString:@"Successed"]){
+                NSDictionary *userdata = [dict valueForKey:@"Data"];
+                successCallback(userdata);
+            }
+            else{
+                failureCallBack(errorCode, errorMessage);
+            }
+            //            NSLog(@"dict is--%@",dict);
+        }
+        else
+        {
+            failureCallBack([NSNumber numberWithInt:error.code], error.localizedDescription);
+        }
+    }];
+    [dataTask resume];
+}
+
+- (void) POSTWithURL: (NSString *)URLString
+          parameters: (NSDictionary *)parameter
      successCallback: (SuccessCallback)successCallback
      failureCallBack: (FailureCallBack)failureCallBack{
     [[Intlgameloading instance] Show:[IntlUserCenter defaultUserCenter].current_view];

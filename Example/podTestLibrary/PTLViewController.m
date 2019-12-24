@@ -8,6 +8,9 @@
 
 #import "PTLViewController.h"
 #import "IntlUserCenter.h"
+#import "IntlAccount.h"
+#import "AccountCache.h"
+#import "HttpUtil.h"
 
 @interface PTLViewController ()
 
@@ -62,6 +65,12 @@
     //重新登入
     [[IntlUserCenter defaultUserCenter] LoginCenter:self];
 }
+
+- (void)afterLogin:(NSString *)uid SID:(NSString *)sid {
+    NSString *message = [NSString stringWithFormat:@"进入游戏:%@",sid];
+    [self UpdateUI:message];
+}
+
 - (void)afterLogout {
     [self UpdateUI:@"登出成功"];
     
@@ -91,7 +100,7 @@
                        GPClientID:@"7453817292517158"
                          GPSecret:@"EVWHPXxGEOXzbjfWxhUp4yOYgTMSJDNA"
                       LoginWebURL:url
-                       DialogSize:CGSizeMake(414, 319)];
+                       DialogSize:CGSizeMake(520, 319)];
     [IntlUserCenter defaultUserCenter].delegate = self;
     [IntlUserCenter defaultUserCenter].loginDelegate = self;
     [IntlUserCenter defaultUserCenter].userCenterDelegate = self;
@@ -107,6 +116,28 @@
 
 - (IBAction)usercenter:(id)sender {
     [[IntlUserCenter defaultUserCenter] UserCenter:self];
+}
+- (IBAction)enterGame:(id)sender {
+    IntlAccount *account = [AccountCache loadAccount];
+    if (!account) {
+        return;
+    }
+    NSLog(@"enter game account is--%@",account);
+    NSDictionary *diction = [NSDictionary dictionaryWithObjectsAndKeys:
+                             account.openid,@"openid",
+                             account.access_token,@"access_token",
+                             nil];
+    NSString *url = @"http://pss-i.ycgame.com/member.ashx?q=3auth_n&ch=agl&did=99000736614286";
+    //登录验证
+    [[HttpUtil instance] POSTWithURL:url
+                          parameters:diction
+                     successCallback:^(NSDictionary *data){
+                         NSLog(@"enter game success--%@",data);
+                         [[[IntlUserCenter defaultUserCenter] delegate] afterLogin:@"" SID:data];
+                     } failureCallBack:^(NSNumber *errorCode, NSString *errorMessage){
+                         NSLog(@"enter game failed--%@", errorMessage);
+                         [[[IntlUserCenter defaultUserCenter] delegate] afterLogin:@"" SID:errorMessage];
+                     }];
 }
 
 -(void)UpdateUI:(NSString *)msg{

@@ -30,6 +30,13 @@ typedef void(^FailureCallBack)(NSNumber *errorCode, NSString *errorMessage);
          parameters: (NSDictionary *)parameters
     successCallback: (SuccessCallback)successCallback
     failureCallBack: (FailureCallBack)failureCallBack;
+
+
+- (void) POSTWithURL: (NSString *)URLString
+          parameters: (NSDictionary *)parameter
+             without: (BOOL)Security
+     successCallback: (SuccessCallback)successCallback
+     failureCallBack: (FailureCallBack)failureCallBack;
 /**
  * POST 请求方法
  *

@@ -18,7 +18,11 @@
                RefreshToken:(NSString *)refresh_token
          RefreshTokenExpire:(NSNumber *)refresh_token_expire
             FirstAuthorized:(NSNumber *)first_authorize;
+
 - (instancetype)initWithDictionary:(NSDictionary *)accountDic;
+
+- (instancetype)initWithDictionary:(NSString *)channel
+                        Dictionary:(NSDictionary *)accountDic;
 
 - (NSDictionary *)getDictionary;
 

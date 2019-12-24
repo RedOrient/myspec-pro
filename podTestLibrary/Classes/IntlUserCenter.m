@@ -17,7 +17,6 @@
 #import "channel/Guest.h"
 #import "AccountCache.h"
 #import "IntlDefine.h"
-#import "IntlAccount.h"
 #include <CommonCrypto/CommonDigest.h>
 #include <CommonCrypto/CommonHMAC.h>
 
@@ -336,6 +335,15 @@ sourceApplication:(NSString *)sourceApplication
                                   sourceApplication:sourceApplication
                                          annotation:annotation];
     return fbhandled;
+}
+
++ (IntlAccount *)loadAccounts {
+    IntlAccount *account = [AccountCache loadAccount];
+    if(!account)
+    {
+        return nil;
+    }
+    return account;
 }
 
 - (void)loadAccounts {

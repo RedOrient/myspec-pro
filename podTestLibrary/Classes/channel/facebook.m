@@ -58,9 +58,9 @@ sourceApplication:(NSString *)sourceApplication
         handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
         if (error) {
             if(isBind){
-                [[[IntlUserCenter defaultUserCenter] userCenterDelegate] onBindError:error.code errorDescription:error.description];
+                [[[IntlUserCenter defaultUserCenter] userCenterDelegate] onBindError:[NSNumber numberWithInt:error.code] errorDescription:error.description];
             }else{
-                [[[IntlUserCenter defaultUserCenter] loginDelegate] onLoginError:error.code errorDescription:error.description];
+                [[[IntlUserCenter defaultUserCenter] loginDelegate] onLoginError:[NSNumber numberWithInt:error.code] errorDescription:error.description];
             }
         } else if (result.isCancelled) {
             if(isBind){
@@ -99,6 +99,8 @@ sourceApplication:(NSString *)sourceApplication
                                                parameters:diction
                                           successCallback:^(NSDictionary *data){
                                               NSLog(@"facebook bind success--%@",data);
+                                              IntlAccount *_bindAccount = [[IntlAccount instance] initWithDictionary:@"facebook" Dictionary:[account getDictionary]];
+                                              [AccountCache saveAccount:_bindAccount];
                                               [[[IntlUserCenter defaultUserCenter] userCenterDelegate] onBindSuccess];
                                           } failureCallBack:^(NSNumber *errorCode, NSString *errorMessage){
                                               NSLog(@"guest bind failed--%@", errorMessage);
@@ -139,7 +141,7 @@ sourceApplication:(NSString *)sourceApplication
                                               [IntlUserCenterPersistent setIsAutoLogin:true];
                                               [[[IntlUserCenter defaultUserCenter] loginDelegate] onLoginSuccess:openId AccessToken:accessToken];
                                           } failureCallBack:^(NSNumber *errorCode, NSString *errorMessage){
-                                              NSLog(@"guest login failed--%@", error.localizedDescription);
+                                              NSLog(@"guest login failed--%@", errorMessage);
                                               [[[IntlUserCenter defaultUserCenter] loginDelegate] onLoginError:errorCode errorDescription:errorMessage];
                                           }];
                      }
