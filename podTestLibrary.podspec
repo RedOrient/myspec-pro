@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'podTestLibrary'
-  s.version          = '0.2.7'
+  s.version          = '0.2.8'
   s.summary          = 'some category for me'
 
 
@@ -48,9 +48,11 @@ Pod::Spec.new do |s|
 
  
     
-    s.frameworks = 'UIKit', 'MapKit', 'WebKit', 'CoreTelephony', 'AdSupport'
+    s.frameworks = 'UIKit', 'MapKit', 'WebKit', 'CoreTelephony', 'AdSupport', 'StoreKit', 'GameKit'
   # s.dependency 'AFNetworking', '~> 2.3'
     s.requires_arc = true
     s.dependency 'FBSDKCoreKit'
     s.dependency 'FBSDKLoginKit'
+    s.dependency 'AppsFlyerFramework'
+
 end

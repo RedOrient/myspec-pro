@@ -81,6 +81,8 @@ sourceApplication:(NSString *)sourceApplication
 
 + (IntlAccount *)loadAccounts;
 
++ (void)SetFirstLogin:(bool)is_first_login;
+
 - (void)LoginCenter:(UIViewController *)viewController;
 
 - (void)UserCenter:(UIViewController *)viewController;

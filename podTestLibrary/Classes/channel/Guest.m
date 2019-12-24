@@ -61,6 +61,7 @@ static Guest *_instance;
                                                                     FirstAuthorized:first_authorize];
                          [AccountCache saveAccount:account];
                          [IntlUserCenterPersistent setIsAutoLogin:true];
+                         [IntlUserCenter SetFirstLogin:false];
                          [[[IntlUserCenter defaultUserCenter] loginDelegate] onLoginSuccess:openId AccessToken:accessToken];
                      } failureCallBack:^(NSNumber *errorCode, NSString *errorMessage){
                          NSLog(@"guest login failed--%@", errorMessage);

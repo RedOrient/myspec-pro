@@ -58,7 +58,8 @@ sourceApplication:(NSString *)sourceApplication
         handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
         if (error) {
             if(isBind){
-                [[[IntlUserCenter defaultUserCenter] userCenterDelegate] onBindError:[NSNumber numberWithInt:error.code] errorDescription:error.description];
+                NSString *message = [NSString stringWithFormat:@"%@%@%",@"fb-", error.description];
+                [[[IntlUserCenter defaultUserCenter] userCenterDelegate] onBindError:[NSNumber numberWithInt:error.code] errorDescription:message];
             }else{
                 [[[IntlUserCenter defaultUserCenter] loginDelegate] onLoginError:[NSNumber numberWithInt:error.code] errorDescription:error.description];
             }
@@ -139,6 +140,7 @@ sourceApplication:(NSString *)sourceApplication
                                                                                          FirstAuthorized:first_authorize];
                                               [AccountCache saveAccount:account];
                                               [IntlUserCenterPersistent setIsAutoLogin:true];
+                                              [IntlUserCenter SetFirstLogin:false];
                                               [[[IntlUserCenter defaultUserCenter] loginDelegate] onLoginSuccess:openId AccessToken:accessToken];
                                           } failureCallBack:^(NSNumber *errorCode, NSString *errorMessage){
                                               NSLog(@"guest login failed--%@", errorMessage);

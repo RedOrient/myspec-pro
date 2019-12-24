@@ -30,8 +30,9 @@ static Intlgameloading *_instance;
 {
     self = [super initWithFrame:frame];
     if (self) {
+        CGRect rect = [[UIScreen mainScreen] bounds];
         // 菊花背景的大小
-        self.frame = CGRectMake(kWidth/2-50, KHeight/2-50, 100, 100);
+        self.frame = CGRectMake(kWidth/2-50, KHeight/2-50, rect.size.width/2+rect.origin.x, rect.size.height/2+rect.origin.y);
         // 菊花的背景色
         self.backgroundColor = MYCOLOR;
         self.layer.cornerRadius = 10;
